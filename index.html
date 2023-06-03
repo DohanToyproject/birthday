@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1, user-scalable=no,initial-scale=1.0" />
     <title>Dohan's Birthday</title>
     <style>
-        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable.css");
+        @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css");
     
         body {
             width: 99vw;
@@ -21,6 +21,8 @@
             display : flex;
             justify-content: center;
             align-items : center;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         div {
@@ -28,14 +30,16 @@
         }
 
         h1 {
-            font-family: Pretendard Black;
+            font-family: Pretendard Variable, sans-serif;
+            font-weight: 900;
             font-size: 50px;
             margin: 0%;
         }
 
         h3 {
-            font-family: Pretendard ExtraBold;
+            font-family: Pretendard Variable, sans-serif;
             font-size: 30px;
+            font-weight: 700;
             margin: 0%;
         }
         
@@ -50,12 +54,10 @@
 
             h1 {
                 font-size: 30px;
-                font-family: Pretendard ExtraBold;
             }
             
             h3 {
                 font-size: 20px;
-                font-family: Pretendard SemiBold;
             }
 
             #mainImg {
