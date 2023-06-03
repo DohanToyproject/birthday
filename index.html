@@ -101,10 +101,9 @@
     <script>
         Kakao.init('57dd5df48e199da17aa954c2bd1d9f7d');
 
-        Kakao.Link.createScrapButton({
+        Kakao.Share.createCustomButton({
             container: '#kakao',
-            requestUrl: 'https://birthday.dohan.r-e.kr',
-            templateId: 94569, // 메시지템플릿 번호
+            templateId: 94569,
             templateArgs: {
                 TIME: remineTime()
             },
