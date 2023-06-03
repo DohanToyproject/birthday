@@ -97,6 +97,10 @@
                 diff -= diffMin * (1000 * 60);
                 const diffSec = Math.floor(diff / 1000);
 
+                if(diffDays < 0) {
+                    return "D-Day!"
+                }
+
                 return `${diffDays < 10 ? `0${diffDays}` : diffDays}일 ${diffHours < 10 ? `0${diffHours}` : diffHours}시간 ${diffMin < 10 ? `0${diffMin}` : diffMin}분 ${diffSec < 10 ? `0${diffSec}` : diffSec}초`
             } catch (error) {
                 return "D-Day!"
