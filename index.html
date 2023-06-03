@@ -95,7 +95,7 @@
         <img src="img/birthday_cake_3d.png" id="mainImg">
         <h3>도한이의 생일 까지</h3>
         <h1 class="time">00일 00시간 00분 00초</h1>
-        <img src="img/share.png" class="button" id="share" data-clipboard-text="https://birthday.dohan.kro.kr/">
+        <img src="img/share.png" class="button" id="share" data-clipboard-text="https://birthday.dohan.r-e.kr/">
         <img src="img/kakaotalk.png" id="kakao" class="button">
     </div>
     <script>
@@ -107,14 +107,14 @@
 
         var sendKakao = function() {
             Kakao.Link.sendScrap({
-                requestUrl: 'https://birthday.dohan.kro.kr',
+                requestUrl: 'https://birthday.dohan.r-e.kr',
                 templateId: 94569, // 메시지템플릿 번호
                 templateArgs: {
                     TIME: remineTime()
                 },
             });
         };
-        
+
         kakaoShareBtn.addEventListener('click', function() {
             sendKakao();
         });
