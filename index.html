@@ -65,9 +65,6 @@
     <script lang="javascript">
         document.addEventListener("DOMContentLoaded", function() {
             const clipboard = new ClipboardJS( '#share' );
-            if (!Kakao.isInitialized()) {
-                Kakao.init('57dd5df48e199da17aa954c2bd1d9f7d');
-            }
             setTime();
         })
 
@@ -91,16 +88,6 @@
             document.querySelector(".time").innerText=remineTime();
             setTimeout(setTime, 0);
         }
-
-        var sendKakao = function() {
-            Kakao.Link.sendScrap({
-                requestUrl: 'https://birthday.dohan.kro.kr',
-                templateId: 94569, // 메시지템플릿 번호
-                templateArgs: {
-                    TIME: remineTime()
-                },
-            });
-        };
     </script>
 </head>
 <body>
@@ -114,6 +101,20 @@
     <script>
         var kakaoShareBtn = document.querySelector('#kakao');
 
+        if (!Kakao.isInitialized()) {
+            Kakao.init('57dd5df48e199da17aa954c2bd1d9f7d');
+        }
+
+        var sendKakao = function() {
+            Kakao.Link.sendScrap({
+                requestUrl: 'https://birthday.dohan.kro.kr',
+                templateId: 94569, // 메시지템플릿 번호
+                templateArgs: {
+                    TIME: remineTime()
+                },
+            });
+        };
+        
         kakaoShareBtn.addEventListener('click', function() {
             sendKakao();
         });
