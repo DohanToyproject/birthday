@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1, user-scalable=no,initial-scale=1.0" />
+    <title>Dohan's Birthday</title>
+    <style>
+        @font-face {
+            font-family: 'Pretendard-Black';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff') format('woff');
+            font-weight: 400;
+            font-style: bold;
+        }
+    
+        body {
+            width: 99vw;
+            height: 80vh;
+            position: relative;
+            display : flex;
+            justify-content: center;
+            align-items : center;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        h1 {
+            font-family: Pretendard-Black;
+            font-size: 50px;
+            margin: 0%;
+        }
+
+        h3 {
+            font-family: Pretendard-Black;
+            font-size: 30px;
+            margin: 0%;
+        }
+        
+        .button {
+            width: 50px;
+        }
+
+        @media (max-width:630px) {
+            .button {
+                width: 40px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+            
+            h3 {
+                font-size: 20px;
+            }
+
+            #mainImg {
+                width: 150px;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.2.0/kakao.min.js" integrity="sha384-x+WG2i7pOR+oWb6O5GV5f1KN2Ko6N7PTGPS7UlasYWNxZMKQA63Cj/B2lbUmUfuC" crossorigin="anonymous"></script>
+    <script lang="javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            const clipboard = new ClipboardJS( '#share' );
+            if (!Kakao.isInitialized()) {
+                Kakao.init('57dd5df48e199da17aa954c2bd1d9f7d');
+            }
+            setTime();
+        })
+
+        function remineTime() {
+            const birthDay = new Date("2023-06-04T00:00:00");
+            const currDay = new Date();
+
+            let diff = birthDay - currDay;
+            const diffDays = Math.floor((birthDay.getTime() - currDay.getTime()) / (1000 * 60 * 60 * 24));
+            diff -= diffDays * (1000 * 60 * 60 * 24);
+            const diffHours = Math.floor(diff / (1000 * 60 * 60));
+            diff -= diffHours * (1000 * 60 * 60);
+            const diffMin = Math.floor(diff / (1000 * 60));
+            diff -= diffMin * (1000 * 60);
+            const diffSec = Math.floor(diff / 1000);
+
+            return `${diffDays < 10 ? `0${diffDays}` : diffDays}일 ${diffHours < 10 ? `0${diffHours}` : diffHours}시간 ${diffMin < 10 ? `0${diffMin}` : diffMin}분 ${diffSec < 10 ? `0${diffSec}` : diffSec}초`
+        }
+
+        function setTime() {
+            document.querySelector(".time").innerText=remineTime();
+            setTimeout(setTime, 0);
+        }
+
+        var sendKakao = function() {
+            Kakao.Link.sendScrap({
+                requestUrl: 'https://birthday.dohan.kro.kr',
+                templateId: 94569, // 메시지템플릿 번호
+                templateArgs: {
+                    TIME: remineTime()
+                },
+            });
+        };
+    </script>
+</head>
+<body>
+    <div>
+        <img src="img/birthday_cake_3d.png" id="mainImg">
+        <h3>도한이의 생일 까지</h3>
+        <h1 class="time">00일 00시간 00분 00초</h1>
+        <img src="img/share.png" class="button" id="share" data-clipboard-text="https://birthday.dohan.kro.kr/">
+        <img src="img/kakaotalk.png" id="kakao" class="button">
+    </div>
+    <script>
+        var kakaoShareBtn = document.querySelector('#kakao');
+
+        kakaoShareBtn.addEventListener('click', function() {
+            sendKakao();
+        });
+    </script>
+</body>
+</html>
